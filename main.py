@@ -1,33 +1,57 @@
 import speech_recognition as sr
 from rutermextract import TermExtractor
-from fuzzywuzzy import process
+import re
+import json
 
-r = sr.Recognizer()
-term_exctractor = TermExtractor()
+def clean():
+    r = sr.Recognizer()
+    term_exctractor = TermExtractor()
 
-def get_matches(query, choises,limit=3):
-    results = process.extract(query,choises,limit=limit)
-    return results
+    data = ''
 
-with sr.Microphone() as source:
-    print("Скажите что-нибудь")
-    audio = r.listen(source)
+    reg = re.compile('[^а-яА-Я ]')
 
-try:
-    recognized_text = r.recognize_google(audio, language="ru-RU")
-    print(recognized_text)
+    with open('/home/alex/Загрузки/source.txt', 'r') as myfile:
+        data=myfile.read().replace('\n', ' ')
 
-except sr.UnknownValueError:
-    print("Робот не расслышал фразу")
+    data = reg.sub('',data)
 
-except sr.RequestError as e:
-    print("Ошибка сервиса; {0}".format(e))
+    with open('/home/alex/Загрузки/clean.txt', 'a') as the_file:
+            the_file.write(data)
 
-with open('subject_area.txt','r') as f:
-    dataset = f.read().split()
+def main():
 
-for term in term_exctractor (recognized_text):
-    print(term.normalized)
-    print(get_matches(term.normalized, dataset))
+    data = {}
+    data['questions'] = []
+    data['questions'].append({
+        'question' : 'Дайте определение понятию База Данных',
+        'code' : 'question',
+        'answer' : 'База данных это представленная в объективной форме совокупность самостоятельных материалов (статей, расчётов, нормативных актов, судебных решений и иных подобных материалов), систематизированных таким образом, чтобы эти материалы могли быть найдены и обработаны с помощью электронной вычислительной машины (ЭВМ)'
+    })
 
+    data['questions'].append({
+        'question': 'Дайте общее определение автоматизированным системам управления:',
+        'code': 'question',
+        'answer': 'Автоматизированная система управления это  совокупность управляемого объекта и автоматических управляющих устройств, в которой часть функций управления выполняет человек комплекс аппаратных и программных средств, а также персонала, предназначенный для управления различными процессами в рамках технологического процесса, производства, предприятия. АСУ применяются в различных отраслях промышленности, энергетике, транспорте и т. п. Термин «автоматизированная», в отличие от термина «автоматическая», подчёркивает сохранение за человеком-оператором некоторых функций, либо наиболее общего, целеполагающего характера, либо не поддающихся автоматизации. АСУ с Системой поддержки принятия решений (СППР) являются основным инструментом повышения обоснованности управленческих решений. '
+    })
+
+    data['questions'].append({
+        'question': 'Что такое искусственный интеллект?',
+        'code': 'question',
+        'answer': 'Искусственный интеллект это  наука и технология создания интеллектуальных машин, особенно интеллектуальных компьютерных программ[1]; (2) свойство интеллектуальных систем выполнять творческие функции, которые традиционно считаются прерогативой человека научную дисциплину, которая занимается моделированием разумного поведения'
+    })
+
+    with open('questions.txt', 'w') as outfile:
+        json.dump(data, outfile)
+
+    with open('questions.txt') as json_file:
+        data = json.load(json_file)
+        for p in data['questions']:
+            print('question: ' + p['question'])
+            print('code: ' + p['code'])
+            print('answer: ' + p['answer'])
+            print('')
+
+
+main()
 
