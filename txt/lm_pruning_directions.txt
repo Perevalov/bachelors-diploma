@@ -1,0 +1,10 @@
+для того чтобы усечь языковую модель необходимо перейти в srilm
+в папку где находятся программы ngram & ngram-count
+
+и выполнить следующие команды:
+
+./ngram-count -kndiscount -interpolate -text train-text.txt -lm your.lm
+
+./ngram -lm your.lm -prune 1e-8 -write-lm your-pruned.lm
+
+./ngram -lm your.lm -ppl test-text.txt

@@ -1,0 +1,37 @@
+sphinx_fe -argfile ./ru-ru/feat.params \
+        -samprate 16000 -c sample.fileids \
+       -di . -do . -ei wav -eo mfc -mswav yes
+
+./bw \
+ -hmmdir ru-ru \
+ -moddeffn ru-ru/mdef \
+ -ts2cbfn .cont. \
+ -feat 1s_c_d_dd \
+ -lda ru-ru/feature_transform \
+ -cmn current \
+ -agc none \
+ -dictfn ru.dic \
+ -ctlfn sample.fileids \
+ -lsnfn sample.transcription \
+ -accumdir .
+
+cp -a ru-ru ru-ru-jj
+
+
+./map_adapt \
+    -moddeffn ru-ru/mdef \
+    -ts2cbfn .ptm. \
+    -meanfn ru-ru/means \
+    -varfn ru-ru/variances \
+    -mixwfn ru-ru/mixture_weights \
+    -tmatfn ru-ru/transition_matrices \
+    -accumdir . \
+    -mapmeanfn ru-ru-jj/means \
+    -mapvarfn ru-ru-jj/variances \
+    -mapmixwfn ru-ru-jj/mixture_weights \
+    -maptmatfn ru-ru-jj/transition_matrices
+
+pocketsphinx_continuous -hmm ru-ru-jj -lm ru.lm -dict ru.dic -infile 1.wav > sidewalk.txt
+
+rec -r 16k -e signed-integer -b 16 -c 1 filename.wav
+

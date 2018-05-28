@@ -1,57 +1,55 @@
-import speech_recognition as sr
+from Analyzing.Model import Model
+from Analyzing.Denotates import Connection
 from rutermextract import TermExtractor
-import re
-import json
+from pymongo import MongoClient
+from graphviz import Digraph
+from SpeechDetector import SpeechDetector
+import sqlite3
 
-def clean():
-    r = sr.Recognizer()
-    term_exctractor = TermExtractor()
-
-    data = ''
-
-    reg = re.compile('[^а-яА-Я ]')
-
-    with open('/home/alex/Загрузки/source.txt', 'r') as myfile:
-        data=myfile.read().replace('\n', ' ')
-
-    data = reg.sub('',data)
-
-    with open('/home/alex/Загрузки/clean.txt', 'a') as the_file:
-            the_file.write(data)
 
 def main():
+    Translist = list()
+    conn = sqlite3.connect('DB/DEV_IDS')
+    c = conn.cursor()
 
-    data = {}
-    data['questions'] = []
-    data['questions'].append({
-        'question' : 'Дайте определение понятию База Данных',
-        'code' : 'question',
-        'answer' : 'База данных это представленная в объективной форме совокупность самостоятельных материалов (статей, расчётов, нормативных актов, судебных решений и иных подобных материалов), систематизированных таким образом, чтобы эти материалы могли быть найдены и обработаны с помощью электронной вычислительной машины (ЭВМ)'
-    })
+    m = Model(c)
+    denotates = m.getDenotates()
 
-    data['questions'].append({
-        'question': 'Дайте общее определение автоматизированным системам управления:',
-        'code': 'question',
-        'answer': 'Автоматизированная система управления это  совокупность управляемого объекта и автоматических управляющих устройств, в которой часть функций управления выполняет человек комплекс аппаратных и программных средств, а также персонала, предназначенный для управления различными процессами в рамках технологического процесса, производства, предприятия. АСУ применяются в различных отраслях промышленности, энергетике, транспорте и т. п. Термин «автоматизированная», в отличие от термина «автоматическая», подчёркивает сохранение за человеком-оператором некоторых функций, либо наиболее общего, целеполагающего характера, либо не поддающихся автоматизации. АСУ с Системой поддержки принятия решений (СППР) являются основным инструментом повышения обоснованности управленческих решений. '
-    })
+    relations = m.getRelations()
 
-    data['questions'].append({
-        'question': 'Что такое искусственный интеллект?',
-        'code': 'question',
-        'answer': 'Искусственный интеллект это  наука и технология создания интеллектуальных машин, особенно интеллектуальных компьютерных программ[1]; (2) свойство интеллектуальных систем выполнять творческие функции, которые традиционно считаются прерогативой человека научную дисциплину, которая занимается моделированием разумного поведения'
-    })
+    subjectAreas = m.getSubjectAreas()
+    connections = m.getConnections(denotates, relations)
 
-    with open('questions.txt', 'w') as outfile:
-        json.dump(data, outfile)
+    #sd = SpeechDetector()
+    #sd.setup_mic()
 
-    with open('questions.txt') as json_file:
-        data = json.load(json_file)
-        for p in data['questions']:
-            print('question: ' + p['question'])
-            print('code: ' + p['code'])
-            print('answer: ' + p['answer'])
-            print('')
+    s = "расскажи про электротехнический факультет" #sd.run()
+    foundConnections = []
+    term_extractor = TermExtractor()
+
+    for term in term_extractor(s,nested=True):
+        foundConnection = Connection.searchByDenotate(term.normalized,connections)
+        if foundConnection != 0:
+            foundConnections.append(foundConnection)
+
+
+    dot = Digraph(comment='connections tree')
+
+    for cons in foundConnections:
+        for cs in cons:
+            dot.node(str(cs.FromDenotate.Id),str(cs.FromDenotate.Name))
+            dot.node(str(cs.ToDenotate.Id), str(cs.ToDenotate.Name))
+            dot.edge(str(cs.FromDenotate.Id),str(cs.ToDenotate.Id),label=str(cs.Relation.Name))
+
+    print(dot.source)
+    dot.render('graphs/round-table.gv')
+
+    #subjectAreaId = SubjectArea.getSubjectAreaByConnections(foundConnections,subjectAreas)
+
+def test_db():
+    client = MongoClient(port=27017)
+    db = client.DEV_IDS
+    #db.relation.inser({"name":"состоит из","code":"CONTAINS"})
 
 
 main()
-

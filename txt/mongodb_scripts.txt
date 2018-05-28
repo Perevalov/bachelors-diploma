@@ -1,0 +1,70 @@
+db.createUser({
+	user:"DEV_IDS",
+	pwd:"DEV_IDS",
+	roles:["readWrite","dbAdmin"]
+});
+
+db.subjectAreas.insert({
+	name : "general"
+});
+
+db.denotates.insert({
+	name : "наука",
+	subjectAreaId : ObjectId("5af41fa191707edc560eb066")
+});
+
+db.denotates.aggregate([{
+	$lookup: {
+		from: "subjectAreas",
+		localField: "subjectAreaId",
+		foreignField: "_id",
+		as: "subjectArea"
+	}
+}]).pretty()
+
+db.relations.insert({
+	name: "это",
+	code: "IS",
+	weight: 0.9
+});
+
+
+
+db.connections.insert({
+	from_denotate:ObjectId("5af41fa191707edc560eb066") ,	
+	relation:  ObjectId("5af41fce99c2f7204e80cde5"),
+	to_denotate: ObjectId("5af41fce99c2f7204e80cde5"),
+	weight: 0.9
+});
+
+//красивый вывод Connection
+db.connections.aggregate([
+	{ $lookup:{
+		from: "denotates",
+		localField: "from_denotate",
+		foreignField: "_id",
+		as: "from_denotate"
+	}},
+	{ $lookup:{
+		from: "denotates",
+		localField: "to_denotate",
+		foreignField: "_id",
+		as: "to_denotate"
+	}},
+	{ $lookup:{
+		from: "relations",
+		localField: "relation",
+		foreignField: "_id",
+		as: "relation"
+	}}
+]).pretty()
+
+
+db.connections.update(
+   { _id:  ObjectId("5af42c8de75044c5e54b24d8") },
+   {
+     $set: {
+       relation : ObjectId("5af4237499c2f7204e80cde6"),
+     }
+   }
+)

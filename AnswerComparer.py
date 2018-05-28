@@ -7,6 +7,9 @@ from pocketsphinx import LiveSpeech
 from os import environ, path
 import pyaudio,time,signal
 
+def speak(string):
+    os.system("echo "" "+string+" "" | RHVoice-test -p Elena")
+
 def remove_stop_words(query): #удаляем все лишние слова из строки
     stop = set(stopwords.words('russian'))
     str = ''
@@ -41,7 +44,10 @@ def compare_docs(doc1,doc2): #сравниваем
 
     #for term in relevant_terms:
        # print(term)
-    return str(len(relevant_terms)/len(terms_kb)*100)
+    if (len(relevant_terms) > len(terms_kb)):
+        return 100
+    else:
+        return str(len(relevant_terms)/len(terms_kb)*100)
 
 def initialize_live_speech():
     speech = LiveSpeech(
@@ -50,27 +56,25 @@ def initialize_live_speech():
         buffer_size=2048,
         no_search=False,
         full_utt=False,
-        hmm='/home/alex/speech/adapting/ru-ru-jj',
+        hmm='/home/alex/speech/adapting/ru-ru-kb1',
         lm='/home/alex/speech/adapting/ru_kb.lm',
         dic='/home/alex/speech/adapting/ru_kb.dic'
     )
     return speech
 
-def recognize_speech_test():
-
-
-
-    print('Говорите')
-    p = subprocess.Popen('exec rec -r 16k -e signed-integer -b 16 -c 1 tmp.wav',shell=True,)
-
-    time.sleep(5)
-    try:
-        subprocess.Popen("kill -9 "+str(p.pid),shell=True)
-    except:
-        print('Ошибка')
-
-    p = subprocess.run('pocketsphinx_continuous -hmm /home/alex/speech/adapting/ru-ru-jj -lm /home/alex/speech/adapting/ru_kb.lm -dict /home/alex/speech/adapting/ru_kb.dic -infile tmp.wav > test.txt',shell=True)
-
+def live_speech_test():
+    speech = LiveSpeech(
+        verbose=False,
+        sampling_rate=16000,
+        buffer_size=2048,
+        no_search=False,
+        full_utt=False,
+        hmm='/home/alex/speech/adapting/ru-ru-kb',
+        lm='/home/alex/speech/adapting/ru_kb.lm',
+        dic='/home/alex/speech/adapting/ru_kb.dic'
+    )
+    for phrase in speech:
+        print(phrase)
 
 def main():
 
@@ -109,7 +113,7 @@ def main():
 
 #TODO - prepare acoustic model
 
-main()
+live_speech_test()
 
 
 
