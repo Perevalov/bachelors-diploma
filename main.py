@@ -1,55 +1,58 @@
-from Analyzing.Model import Model
 from Analyzing.Denotates import Connection
 from rutermextract import TermExtractor
-from pymongo import MongoClient
 from graphviz import Digraph
-from SpeechDetector import SpeechDetector
-import sqlite3
+from Analyzing.ObjectDocumentModel import Denotate,Connection,Relation
+from Analyzing.ObjectDocumentModel2 import Connection as Conn
+from fuzzywuzzy import fuzz
+import AnswerTypeClassifier as cls
 
-
+def getKeyByValue(dict,val):
+    for a,b in dict:
+        if b==val:
+            return a
 def main():
-    Translist = list()
-    conn = sqlite3.connect('DB/DEV_IDS')
-    c = conn.cursor()
-
-    m = Model(c)
-    denotates = m.getDenotates()
-
-    relations = m.getRelations()
-
-    subjectAreas = m.getSubjectAreas()
-    connections = m.getConnections(denotates, relations)
 
     #sd = SpeechDetector()
     #sd.setup_mic()
 
-    s = "расскажи про электротехнический факультет" #sd.run()
+    #s = sd.run()
+
     foundConnections = []
     term_extractor = TermExtractor()
+    connections = []
+    s = "Здравствуйте. Можно подать документы для поступления в электронном виде? Если да, то какие и на какой адрес?"
 
-    for term in term_extractor(s,nested=True):
-        foundConnection = Connection.searchByDenotate(term.normalized,connections)
-        if foundConnection != 0:
-            foundConnections.append(foundConnection)
-
+    for c in Connection.objects.all():
+        if any(fuzz.ratio(c.denotate1.name.lower(),str(t.normalized))>80 for t in term_extractor(s,nested=False)):
+            print(c.denotate1.name+"--"+c.relation.name+"--"+c.denotate2.name)
+            connections.append(c)
 
     dot = Digraph(comment='connections tree')
 
-    for cons in foundConnections:
-        for cs in cons:
-            dot.node(str(cs.FromDenotate.Id),str(cs.FromDenotate.Name))
-            dot.node(str(cs.ToDenotate.Id), str(cs.ToDenotate.Name))
-            dot.edge(str(cs.FromDenotate.Id),str(cs.ToDenotate.Id),label=str(cs.Relation.Name))
+    for c in connections:
+        dot.node(str(c.denotate1.name),str(c.denotate1.name))
+        dot.node(str(c.denotate2.name), str(c.denotate2.name))
+        dot.edge(str(c.denotate1.name),str(c.denotate2.name),label=str(c.relation.name))
 
     print(dot.source)
     dot.render('graphs/round-table.gv')
 
-    #subjectAreaId = SubjectArea.getSubjectAreaByConnections(foundConnections,subjectAreas)
+def IR():
+    map = {'yes_no': 0, 'description': 1, 'number': 2, 'place': 3, 'date': 4}
+    search_rules = {'ЭТО': 0, 'ЭТО': 1, 'РАЗМЕР': 2, 'АДРЕС': 3, 'ДАТА': 4}
+    s = "когда будет день открытых дверей?"
+    vector = cls.classify(s)
+    index = vector.index(max(vector))
+    print(index)
 
-def test_db():
-    client = MongoClient(port=27017)
-    db = client.DEV_IDS
-    #db.relation.inser({"name":"состоит из","code":"CONTAINS"})
+    term_extractor = TermExtractor()
+    print([t.normalized for t in term_extractor(s)])
 
+    for c in Conn.objects.all():
+        if (any(fuzz.partial_ratio(c.denotate1.name.lower(),str(t.normalized))>80 for t in term_extractor(s)) or \
+            any(fuzz.partial_ratio(c.denotate2.name.lower(), str(t.normalized))>80 for t in term_extractor(s))) and \
+                any(c.relation.name == key.lower() for key in getKeyByValue(search_rules,index)):
+            print(c.denotate1.name + "--" + c.denotate2.name)
 
-main()
+IR()
+#main()

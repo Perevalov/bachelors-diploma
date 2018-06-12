@@ -2,11 +2,10 @@ from pymongo import TEXT
 from pymongo.operations import IndexModel
 from pymodm import connect, fields, MongoModel, EmbeddedMongoModel
 
-connect('mongodb://localhost:27017/DEV_IDS')
+connect('mongodb://localhost:27017/DEV_PNRPU')
 
 class Denotate(MongoModel):
     name = fields.CharField(primary_key=True)
-    definition = fields.CharField()
 
     class Meta:
         final = True

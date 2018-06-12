@@ -17,21 +17,14 @@ class SpeechDetector:
     def __init__(self):
 
         # Конфигурация микрофона
-        self.CHUNK = 1024  # CHUNKS - число байт, считываемое каждый раз с микро
+        self.CHUNK = 1024  # CHUNKS - число байт, считываемое каждый раз с микрофона
         self.FORMAT = pyaudio.paInt16
         self.CHANNELS = 1 #кол-во каналов 1-моно 2-стерео
         self.RATE = 16000 #частота
-
         self.SILENCE_LIMIT = 2
-
         self.PREV_AUDIO = 2
-
         self.THRESHOLD = 3500
         self.num_phrases = -1
-
-
-        MODELDIR = "../../tools/pocketsphinx/model"
-        DATADIR = "../../tools/pocketsphinx/test/data"
 
         # Конфигурируем декодер
         config = Decoder.default_config()
@@ -60,7 +53,6 @@ class SpeechDetector:
         values = [math.sqrt(abs(audioop.avg(stream.read(self.CHUNK), 4)))
                   for x in range(num_samples)]
         values = sorted(values, reverse=True)
-
         r = sum(values[:int(num_samples * 0.2)]) / int(num_samples * 0.2)
 
         print2("Закончили настройку.")
@@ -109,7 +101,6 @@ class SpeechDetector:
     def run(self):
 
         #self.setup_mic()
-
         #Открываем поток
 
         p = pyaudio.PyAudio()

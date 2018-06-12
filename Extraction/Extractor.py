@@ -1,9 +1,10 @@
-import re, sys,wikipedia,pymorphy2,nltk
+import re
+from fuzzywuzzy import fuzz
 from rutermextract import TermExtractor
+import xml.etree.ElementTree as ET, wikipedia
+from Analyzing.ObjectDocumentModel import Denotate,Connection,Relation
+from nltk.tokenize import RegexpTokenizer
 
-DEFINITIONS = 'Definitions.txt'
-ENDINGS = 'verbEndings.txt'
-DELIMITER = '|'
 wikipedia.set_lang('ru')
 
 def splitTextIntoSentences(text):
@@ -29,51 +30,63 @@ def splitTextIntoSentences(text):
         res.append(text)
     return res
 
-def extractTermsAndDefinitions(text):
+def parseRuTez():
+
+    tree = ET.parse('../txt/rutez.xml')
+    root = tree.getroot()
+    connections = []
+    for item in root.iter('item'):
+        for rels in item.find('rels'):
+            denotate1 = Denotate(item.find('name').text,"no_def")
+            relation = Relation(rels[0].text)
+            denotate2 = Denotate(rels[1].text, "no_def")
+            connection = Connection(denotate1,relation,denotate2,1)
+            connections.append(connection)
+            #print(item.find('name').text+":"+rels[0].text+":"+rels[1].text)
+
+    return connections
+
+def getWikiPages():
+
+    with open('../txt/article_names.txt') as f:
+        names = f.readlines()
+
+    names = [l.strip() for l in names]
     term_extractor = TermExtractor()
-    sentences = splitTextIntoSentences(text)
+    tokens = []
 
-    with open(DEFINITIONS, 'r') as myfile:
-        relations = myfile.read().replace('\n', '')
+    for name in names:
+        print(name)
+        tokens = tokens + [term.normalized for term in term_extractor(wikipedia.page(name).content,nested=True)]
 
-    relations = relations.split(DELIMITER)
+    with open('../txt/corpus.txt', 'a') as the_file:
+        for t in tokens:
+            the_file.write(str(t)+"\n")
 
-    for s in sentences:
-        if len(term_extractor(s))>0:
-            relation = isRelationInString(s, relations)
-            if relation != 0:
-                for term in term_extractor(s[0:s.find(relation)-1]):
-                    print(term.normalized+":::"+s[s.find(relation)+1:len(s)-1])
-                    break
-                print('====')
+def removeDuplicates():
+    with open('../txt/corpus.txt') as the_file:
+        words = the_file.readlines()
+        unique = []
+        [unique.append(w) for w in words if (w not in unique and not re.match('[a-z0-9]',w) and len(w)>3)]
 
-def isRelationInString(s,relations):
-    for r in relations:
-        if r in s:
-            return r
-    return 0
-
-#def removeAdjectives(text):
+    with open('../txt/unique.txt','a') as file:
+        for w in unique:
+            file.write(str(w))
 
 
-def findRelations(text):
-    sentences = splitTextIntoSentences(text)
-    morph = pymorphy2.MorphAnalyzer()
-    term_extractor = TermExtractor()
-
-    with open(ENDINGS, 'r') as myfile:
-        endings = myfile.read().replace('\n', '')
-    endings = endings.split(DELIMITER)
-
-    for s in sentences:
-        words = nltk.word_tokenize(s)
-        for w in words:
-            if (str(morph.parse(w)[0].tag.POS) == 'VERB' or str(morph.parse(w)[0].tag.POS) == 'ADJS') and (any(w.endswith(e) for e in endings)):
-                #print(w+"--"+str(morph.parse(w)[0].tag.POS))
-                terms = term_extractor(s[0:s.find(w)-1])
-                definitions = term_extractor(s[s.find(w)+1:len(s)-1])
-                if len(terms):
-                    print(str(terms[0].normalized)+"--"+w+"--"+str(definitions[0].normalized))
 
 
-findRelations(wikipedia.page("машинное обучение").content)
+with open('../txt/unique.txt', 'r') as the_file:
+    tokens = the_file.readlines()
+
+cons = parseRuTez()
+
+for c in cons:
+    if any(fuzz.ratio(str(c.denotate1.name).lower(),t)>90 for t in tokens) or any(fuzz.ratio(str(c.denotate2.name).lower(),t)>90 for t in tokens):
+        print("saved")
+        c.denotate1.save()
+        c.denotate2.save()
+        c.relation.save()
+        c.save()
+
+
