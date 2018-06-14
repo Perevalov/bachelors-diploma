@@ -2,15 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddd0f658-015e-4671-b9b2-339dbbe0d4f5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Analyzing/ObjectDocumentModel2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Generation/MarkovGenerator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Analyzing/Frames.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Analyzing/TextAnalyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Configuration/Config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Generation/PatternGenerator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/denotate_parser_loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/txt/stopwords.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyzing/ObjectDocumentModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analyzing/ObjectDocumentModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extraction/Extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Extraction/Extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpeechDetector.py" beforeDir="false" afterPath="$PROJECT_DIR$/SpeechDetector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphs/round-table.gv" beforeDir="false" afterPath="$PROJECT_DIR$/graphs/round-table.gv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphs/round-table.gv.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/graphs/round-table.gv.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Analyzing/ObjectDocumentModel2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analyzing/ObjectDocumentModel2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerComparer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerTypeClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analyzing/AnswerTypeClassifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/DEV_IDS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Extraction/Definitions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Extraction/Extractor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Extraction/verbEndings.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpeechDetector.py" beforeDir="false" afterPath="$PROJECT_DIR$/Recognition/SpeechDetector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kb.csv" beforeDir="false" afterPath="$PROJECT_DIR$/txt/kb.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/txt/AnswerType/number.txt" beforeDir="false" afterPath="$PROJECT_DIR$/txt/AnswerType/number.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/txt/denotates.txt" beforeDir="false" afterPath="$PROJECT_DIR$/txt/denotates.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,53 +32,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="TextAnalyzer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Analyzing/TextAnalyzer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="954">
-              <caret line="53" column="58" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="58" />
+            <state relative-caret-position="551">
+              <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
               <folding>
-                <element signature="e#0#42#0" expanded="true" />
+                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#234#290#0" />
+                <element signature="e#357#511#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpeechDetector.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SpeechDetector.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-642">
-              <caret line="55" column="11" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObjectDocumentModel2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Analyzing/ObjectDocumentModel2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tmp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tmp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="AnswerTypeClassifier.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AnswerTypeClassifier.py">
+        <entry file="file://$PROJECT_DIR$/Analyzing/AnswerTypeClassifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="72" column="17" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+            <state relative-caret-position="371">
+              <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Configuration/Config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -121,13 +116,21 @@
         <option value="$PROJECT_DIR$/txt/unique.txt" />
         <option value="$PROJECT_DIR$/Extraction/Extractor.py" />
         <option value="$PROJECT_DIR$/Extraction/Extractor.py" />
-        <option value="$PROJECT_DIR$/txt/AnswerType/number.txt" />
-        <option value="$PROJECT_DIR$/AnswerTypeClassifier.py" />
-        <option value="$PROJECT_DIR$/Analyzing/ObjectDocumentModel2.py" />
-        <option value="$PROJECT_DIR$/txt/denotates.txt" />
-        <option value="$PROJECT_DIR$/tmp.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/SpeechDetector.py" />
+        <option value="$PROJECT_DIR$/tmp.py" />
+        <option value="$PROJECT_DIR$/AnswerTypeClassifier.py" />
+        <option value="$PROJECT_DIR$/Analyzing/TextAnalyzing.py" />
+        <option value="$PROJECT_DIR$/txt/stopwords.txt" />
+        <option value="$PROJECT_DIR$/Generation/PatternGenerator.py" />
+        <option value="$PROJECT_DIR$/Configuration/Config.py" />
+        <option value="$PROJECT_DIR$/denotate_parser-loader.py" />
+        <option value="$PROJECT_DIR$/Analyzing/AnswerTypeClassifier.py" />
+        <option value="$PROJECT_DIR$/Analyzing/Frames.py" />
+        <option value="$PROJECT_DIR$/txt/denotates.txt" />
+        <option value="$PROJECT_DIR$/txt/AnswerType/number.txt" />
+        <option value="$PROJECT_DIR$/Analyzing/ObjectDocumentModel2.py" />
+        <option value="$PROJECT_DIR$/Analyzing/TextAnalyzer.py" />
       </list>
     </option>
   </component>
@@ -150,6 +153,27 @@
               <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
               <item name="diploma" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diploma" type="462c0819:PsiDirectoryNode" />
+              <item name="Analyzing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diploma" type="462c0819:PsiDirectoryNode" />
+              <item name="Configuration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diploma" type="462c0819:PsiDirectoryNode" />
+              <item name="txt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diploma" type="462c0819:PsiDirectoryNode" />
+              <item name="txt" type="462c0819:PsiDirectoryNode" />
+              <item name="AnswerType" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -163,14 +187,14 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Analyzing" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/txt" />
+      <recent name="$PROJECT_DIR$/Recognition" />
+      <recent name="$PROJECT_DIR$/Analyzing" />
       <recent name="$USER_HOME$" />
       <recent name="$PROJECT_DIR$/Extraction" />
-      <recent name="$PROJECT_DIR$/" />
-      <recent name="$USER_HOME$/Recognition" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Analyzing" />
     </key>
   </component>
@@ -186,7 +210,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.TextAnalyzer">
     <configuration name="AnswerTypeClassifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Диплом" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,7 +223,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AnswerTypeClassifier.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Analyzing/AnswerTypeClassifier.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -223,24 +247,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="ObjectDocumentModel" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Диплом" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Analyzing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Analyzing/ObjectDocumentModel.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="Synthesizer" type="PythonConfigurationType" factoryName="Python">
       <module name="Диплом" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -254,6 +260,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Recognition/SpeechDetector.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="TextAnalyzer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Диплом" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Analyzing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Analyzing/TextAnalyzer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -289,7 +313,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tmp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/denotate_parser_loader.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -298,18 +322,18 @@
     <list>
       <item itemvalue="Python.Synthesizer" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.ObjectDocumentModel" />
       <item itemvalue="Python.Extractor (1)" />
       <item itemvalue="Python.tmp" />
       <item itemvalue="Python.AnswerTypeClassifier" />
+      <item itemvalue="Python.TextAnalyzer" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.TextAnalyzer" />
         <item itemvalue="Python.tmp" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.AnswerTypeClassifier" />
         <item itemvalue="Python.Extractor (1)" />
-        <item itemvalue="Python.ObjectDocumentModel" />
       </list>
     </recent_temporary>
   </component>
@@ -327,25 +351,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3148248" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3148248" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32991803" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25307378" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25307378" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.33401638" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33401638" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32991803" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -399,62 +424,13 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="51" />
+      <option name="time" value="58" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LiveSpeech.py" />
-    <entry file="file://$PROJECT_DIR$/AnswerComparer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="43" column="150" selection-start-line="43" selection-start-column="150" selection-end-line="43" selection-end-column="150" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="51" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LiveSpeech.py" />
-    <entry file="file://$PROJECT_DIR$/AnswerComparer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LiveSpeech.py" />
-    <entry file="file://$PROJECT_DIR$/AnswerComparer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AnswerComparer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AnswerComparer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/AnswerComparer.py" />
+    <entry file="file://$PROJECT_DIR$/AnswerComparer.py" />
+    <entry file="file://$PROJECT_DIR$/AnswerComparer.py" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -536,13 +512,6 @@
         <state relative-caret-position="-1404" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Extraction/Definitions.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/site-packages/rutermextract/term_extractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
@@ -550,13 +519,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Extraction/verbEndings.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Extraction/verbEndings.txt" />
     <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
@@ -569,13 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AnswerComparer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-979">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -593,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Analyzing/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/txt/corpus.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -612,44 +561,7 @@
         <state relative-caret-position="-59778" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/txt/rutez.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="1" column="340877" selection-start-line="1" selection-start-column="340871" selection-end-line="1" selection-end-column="340877" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kb.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/txt/AnswerType/number.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Analyzing/ObjectDocumentModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Extraction/Extractor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1458">
-          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/txt/denotates.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/txt/rutez.xml" />
     <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/re.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -657,51 +569,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Analyzing/Denotates.py">
+    <entry file="file://$PROJECT_DIR$/Recognition/SpeechDetector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" selection-end-column="27" />
+        <state relative-caret-position="18">
+          <caret line="55" column="11" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AnswerTypeClassifier.py">
+    <entry file="file://$PROJECT_DIR$/txt/stopwords.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="72" column="17" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+        <state relative-caret-position="90">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Extraction/Extractor.py" />
+    <entry file="file://$PROJECT_DIR$/Extraction/Definitions.txt" />
+    <entry file="file://$PROJECT_DIR$/AnswerComparer.py" />
+    <entry file="file://$PROJECT_DIR$/txt/kb.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generation/PatternGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Analyzing/Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Analyzing/ObjectDocumentModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Analyzing/Denotates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/txt/AnswerType/description.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/txt/denotates.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Analyzing/Frames.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#900#2485#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Analyzing/ObjectDocumentModel2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tmp.py">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="53" column="58" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="58" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SpeechDetector.py">
+    <entry file="file://$PROJECT_DIR$/txt/AnswerType/number.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-642">
-          <caret line="55" column="11" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
+        <state relative-caret-position="54">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Configuration/Config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/txt/AnswerType/yes_no.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/denotate_parser_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Analyzing/AnswerTypeClassifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Analyzing/TextAnalyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#234#290#0" />
+            <element signature="e#357#511#0" />
+          </folding>
         </state>
       </provider>
     </entry>

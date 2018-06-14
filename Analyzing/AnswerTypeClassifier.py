@@ -1,5 +1,5 @@
 import pymorphy2
-from nltk.corpus import stopwords
+from fuzzywuzzy import fuzz
 
 morph = pymorphy2.MorphAnalyzer()
 
@@ -9,59 +9,53 @@ number = []
 place = []
 date = []
 
-"""
-yes_no
-*наречие* ли
-*глагол* ли
-*числительное* ли
-"""
-with open('txt/AnswerType/yes_no.txt') as f:
+with open('../txt/AnswerType/yes_no.txt') as f:
     yes_no=[l.strip() for l in f.readlines()]
 
-with open('txt/AnswerType/description.txt') as f:
+with open('../txt/AnswerType/description.txt') as f:
     description=[l.strip() for l in f.readlines()]
 
-with open('txt/AnswerType/number.txt') as f:
+with open('../txt/AnswerType/number.txt') as f:
     number=[l.strip() for l in f.readlines()]
 
-with open('txt/AnswerType/place.txt') as f:
+with open('../txt/AnswerType/place.txt') as f:
     place=[l.strip() for l in f.readlines()]
 
-with open('txt/AnswerType/date.txt') as f:
+with open('../txt/AnswerType/date.txt') as f:
     date=[l.strip() for l in f.readlines()]
 
 def yes_no_score(text_list):
     counter = 0
     for word in text_list:
-        if any(word == i for i in yes_no):
+        if any(fuzz.partial_ratio(word, i)>90 for i in yes_no):
             counter=counter+1
     return counter/len(text_list)
 
 def description_score(text_list):
     counter = 0
     for word in text_list:
-        if any(word == i for i in description):
+        if any(fuzz.partial_ratio(word, i)>90 for i in description):
             counter=counter+1
     return counter/len(text_list)
 
 def number_score(text_list):
     counter = 0
     for word in text_list:
-        if any(word == i for i in number):
+        if any(fuzz.partial_ratio(word, i)>90 for i in number):
             counter=counter+1
     return counter/len(text_list)
 
 def place_score(text_list):
     counter = 0
     for word in text_list:
-        if any(word == i for i in place):
+        if any(fuzz.partial_ratio(word, i)>90 for i in place):
             counter=counter+1
     return counter/len(text_list)
 
 def date_score(text_list):
     counter = 0
     for word in text_list:
-        if any(word == i for i in date):
+        if any(fuzz.partial_ratio(word, i)>90 for i in date):
             counter=counter+1
     return counter/len(text_list)
 

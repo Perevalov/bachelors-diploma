@@ -6,7 +6,7 @@ connect('mongodb://localhost:27017/DEV_PNRPU')
 
 class Denotate(MongoModel):
     name = fields.CharField(primary_key=True)
-
+    #type = fields.CharField()
     class Meta:
         final = True
 
@@ -25,6 +25,10 @@ class Connection(MongoModel):
 
     class Meta:
         final = True
+    def __repr__(self):
+        return '{} ---> {} ---> {}'.format(self.denotate1,self.relation,self.denotate2)
+
+
 
 #пример создания документов
 #r = Relation("это",rType).save()

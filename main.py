@@ -1,10 +1,11 @@
 from Analyzing.Denotates import Connection
 from rutermextract import TermExtractor
 from graphviz import Digraph
-from Analyzing.ObjectDocumentModel import Denotate,Connection,Relation
+from Analyzing.ObjectDocumentModel import Connection
 from Analyzing.ObjectDocumentModel2 import Connection as Conn
 from fuzzywuzzy import fuzz
-import AnswerTypeClassifier as cls
+from Analyzing import AnswerTypeClassifier as cls
+
 
 def getKeyByValue(dict,val):
     for a,b in dict:
