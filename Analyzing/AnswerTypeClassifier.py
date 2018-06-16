@@ -1,27 +1,27 @@
-import pymorphy2
+import pymorphy2,os
 from fuzzywuzzy import fuzz
 
 morph = pymorphy2.MorphAnalyzer()
-
+PROJECT_PATH =os.path.dirname(os.path.abspath(__file__))
 yes_no = []
 description = []
 number = []
 place = []
 date = []
 
-with open('../txt/AnswerType/yes_no.txt') as f:
+with open('/home/alex/diploma/txt/AnswerType/yes_no.txt') as f:
     yes_no=[l.strip() for l in f.readlines()]
 
-with open('../txt/AnswerType/description.txt') as f:
+with open('/home/alex/diploma/txt/AnswerType/description.txt') as f:
     description=[l.strip() for l in f.readlines()]
 
-with open('../txt/AnswerType/number.txt') as f:
+with open('/home/alex/diploma/txt/AnswerType/number.txt') as f:
     number=[l.strip() for l in f.readlines()]
 
-with open('../txt/AnswerType/place.txt') as f:
+with open('/home/alex/diploma/txt/AnswerType/place.txt') as f:
     place=[l.strip() for l in f.readlines()]
 
-with open('../txt/AnswerType/date.txt') as f:
+with open('/home/alex/diploma/txt/AnswerType/date.txt') as f:
     date=[l.strip() for l in f.readlines()]
 
 def yes_no_score(text_list):
@@ -42,6 +42,8 @@ def number_score(text_list):
     counter = 0
     for word in text_list:
         if any(fuzz.partial_ratio(word, i)>90 for i in number):
+            if fuzz.ratio(word,"сколько")>90:
+                counter = counter + 1
             counter=counter+1
     return counter/len(text_list)
 

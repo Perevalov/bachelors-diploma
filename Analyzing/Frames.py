@@ -35,7 +35,7 @@ class Place:
         self.Address = address
 
     def __repr__(self):
-        return 'Адрес {}: {} '.format(self.Name, self.Definition)
+        return '{} находится в {} '.format(self.Name, self.Address)
 
 def fill_frame(connections, type):
     if type == Config.NUMBER:
@@ -71,7 +71,7 @@ def fill_frame(connections, type):
                 name = c.denotate1.name
                 places.append(Place(name,address))
         return places
-    elif type == Config.DEFINITION:
+    elif type == Config.DEFINITION or type == Config.YES_NO:
         entities = []
         for c in connections:
             name = ''

@@ -28,8 +28,8 @@ class SpeechDetector:
 
         # Конфигурируем декодер
         config = Decoder.default_config()
-        config.set_string('-hmm', '/home/alex/speech/adapting/ru-ru-adapted')
-        config.set_string('-lm', '/home/alex/speech/adapting/ru_kb.lm')
+        config.set_string('-hmm', '/home/alex/speech/adapting/ru-ru-qq')
+        config.set_string('-lm', '/home/alex/speech/adapting/ru.lm')
         config.set_string('-dict', '/home/alex/speech/adapting/ru.dic')
 
         # Создаем декодер
