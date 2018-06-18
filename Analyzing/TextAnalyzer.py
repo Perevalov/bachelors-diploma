@@ -50,7 +50,7 @@ def get_parent(denotate,all_connections):
 
     connections = []
     for c in all_connections:
-        if (c.denotate1.name == denotate.name) and (c.relation.name.upper() == Config.ALIAS_REL):
+        if (c.denotate1.name == denotate.name) and (any(c.relation.name.upper() == rel for rel in [Config.ALIAS_REL, Config.DOWN_REL, Config.UP_REL,Config.WHOLE_REL])):
             for c1 in all_connections:
                 if (c1.denotate1.name==c.denotate2.name) or (c1.denotate2.name == c.denotate2.name):
                     if not isExists(c1, connections):

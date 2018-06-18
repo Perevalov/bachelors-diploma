@@ -38,6 +38,7 @@ class Place:
         return '{} находится в {} '.format(self.Name, self.Address)
 
 def fill_frame(connections, type):
+    #TODO: упорядочивать по вероятности Н-Граммами Тут
     if type == Config.NUMBER:
         numbers = []
         for c in connections:

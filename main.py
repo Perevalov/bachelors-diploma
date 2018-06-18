@@ -24,11 +24,10 @@ def main():
     dot.render('graphs/round-table.gv')
 
 def test(text):
-    sd = SpeechDetector.SpeechDetector()
-    sd.setup_mic()
-    s = sd.run()
+    #sd = SpeechDetector.SpeechDetector()
+    #sd.setup_mic()
+    #s = sd.run()
 
-    return
     #классифицируем тип ответа
     text = TextAnalyzer.prepare_text(text)
     map = Config.MAP
@@ -41,6 +40,10 @@ def test(text):
     #Заполняем фреймы
     frames = Frames.fill_frame(connections, getKeyByValue(map, index))
 
+    for f in frames:
+        print(f)
+    return
+
     try:
         if len(frames) > 1:
             if index != 1:
@@ -52,4 +55,4 @@ def test(text):
             NgramSearch.speak(frames[0])
     except Exception:
         print("Пожалуйста, переформулируйте свой вопрос.")
-test("Какие документы необходимо подавать для поступления?")
+test("Знаете ли вы компанию Prognoz?")
